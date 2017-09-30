@@ -1,0 +1,23 @@
+{
+  "name": "cryptoportfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-bittrex-api": "^0.7.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjbernaldo/cryptoportfolio.git"
+  },
+  "author": "Rj Bernaldo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rjbernaldo/cryptoportfolio/issues"
+  },
+  "homepage": "https://github.com/rjbernaldo/cryptoportfolio#readme"
+}
