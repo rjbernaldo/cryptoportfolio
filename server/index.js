@@ -1,25 +1,14 @@
 require('dotenv').config();
 
-const bittrex = require('node-bittrex-api');
-const markets = [
+const express = require('express');
+const client = require('./client');
+const api = require('./api');
 
-];
+const app = express();
 
-bittrex.options({
-  apikey: process.env.BITTREX_API_KEY,
-  apisecret: process.env.BITTREX_API_SECRET,
-});
+app.use('/app', client);
+app.use('/api', api);
 
-bittrex.getmarketsummaries((data, err) => {
-  if (err) return console.error(err);
-
-  const marketsAvailable = data.result.reduce((acc, cur) => {
-    if (cur.MarketName.indexOf('ANT') > -1) {
-      return acc.concat(cur.MarketName);
-    }
-
-    return acc;
-  }, []);
-
-  console.log(marketsAvailable);
+app.listen(3000, () => {
+  console.log('Listening on port 3000');
 });
