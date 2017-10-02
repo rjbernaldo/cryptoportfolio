@@ -27,14 +27,18 @@ bittrex.options({
 
 module.exports = {
   getData: (cb) => {
-    async.each(markets, (market, next) => {
-      bittrex.getticker({ market }, (ticker) => {
-        console.log(ticker);
+    async.reduce(markets, [], (memo, market, next) => {
+      bittrex.getmarkethistory({ market }, (err, data) => {
+        if (!ticker.success) next(`Error retrieving ${market}.`);
+
+        next(null, memo.concat(Object.assign({}, ticker, {
+          market,
+        })));
       });
-    }, (err) => {
+    }, (err, result) => {
       if (err) return cb(err);
 
-      return cb(null, []);
+      return cb(null, result);
     });
   },
 };
